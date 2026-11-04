@@ -1,0 +1,74 @@
+# 📚 Ustaad AI — Exam Prep for Pakistani Matric & Inter Students
+
+Upload a chapter from your own textbook and practice board-style questions.
+Answers are checked **only against your chapter** and explained in
+**English, اردو (Urdu), or Roman Urdu**.
+
+Built with [Streamlit](https://streamlit.io) and Google Gemini (via
+[Google AI Studio](https://aistudio.google.com)).
+
+## Features
+
+- Upload PDF, Word, TXT, or **photos of book pages** (read with Gemini vision)
+- Practice questions in Pakistani board style: MCQ, short, long, true/false, fill in the blanks, definition, reason
+- Instant marking with score, missing points, mistakes, model answer, and a revision tip
+- Understands answers written in English, Urdu, or Roman Urdu
+- Chapter summary, glossary, and likely exam questions
+- "Samajh nahi aya" explainer with Pakistani real-life examples
+- Flashcards
+- Progress chart by topic and a 3-day revision plan
+- Proper Urdu (Nastaliq) font with right-to-left display
+
+## Run locally
+
+```bash
+git clone https://github.com/YOUR-USERNAME/ustaad-ai.git
+cd ustaad-ai
+python -m venv venv
+# Windows: venv\Scripts\activate      Mac/Linux: source venv/bin/activate
+pip install -r requirements.txt
+```
+
+Get a free API key at <https://aistudio.google.com/apikey>, then create
+`.streamlit/secrets.toml` (this file is git-ignored):
+
+```toml
+GEMINI_API_KEY = "paste-your-key-here"
+```
+
+Start the app:
+
+```bash
+streamlit run app.py
+```
+
+## Deploy on Streamlit Community Cloud
+
+1. Push this repo to GitHub.
+2. Go to <https://share.streamlit.io>, click **New app**, choose the repo, branch `main`, file `app.py`.
+3. Open **Advanced settings → Secrets** and paste `GEMINI_API_KEY = "your-key"`.
+4. Click **Deploy**.
+
+Optional secret: `GEMINI_MODEL` (default `gemini-2.5-flash`).
+
+## Project structure
+
+```
+app.py                         main Streamlit app
+requirements.txt               dependencies
+.streamlit/secrets.toml.example  template for your API key
+.gitignore                     keeps secrets out of GitHub
+```
+
+## Important notes
+
+- **Never commit your API key.** Keep it in `secrets.toml` or Streamlit Cloud Secrets.
+- AI can make mistakes. Your textbook and teacher are the final authority.
+- Scanned PDFs cannot be read as text. Upload photos of the pages instead.
+- Chapters are processed per session and not stored. Do not upload copyrighted books to a public repo.
+- Each session is limited to 80 AI calls to protect the free quota.
+
+## Roadmap
+
+Handwritten answer photos, voice answers in Urdu, timer mode, mock board papers,
+spaced repetition, teacher mode with class quiz codes.
